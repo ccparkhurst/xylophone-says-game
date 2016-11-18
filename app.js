@@ -17,7 +17,7 @@ $('#keyF').on('click', function() {
 $('#keyG').on('click', function() {
     $('#audioKeyG').get(0).play();
 });
-};
+}
 freePlayMode();
 
 //global variables
@@ -33,11 +33,12 @@ function initialize() {
 //function to trigger the start of the game
 function startGame() {
   $('img').on('click', function() {
-      $('#audioKeyAll').get(0).play();
-      incRound();
+    showCompSequence();
   });
 }
 startGame();
+
+
 
 //function to increment the round
 function incRound() {
@@ -51,27 +52,42 @@ incRound();
 
 //function to generate the computer sequence
 function generateCompSequence() {
-      compSequenceArray.push(Math.floor(Math.random() * 5) +1);
+      compSequenceArray.push(Math.floor(Math.random() * 5));
       return compSequenceArray;
 }
 generateCompSequence();
 
 //function to flash key and play sound of generated element
-function showCompSequence() {
-  // keys = ['#keyC','#keyD','#keyD','#keyF','#keyG'];
+function playStuff(key, audio) {
+  $(key).stop().animate({opacity: '1'}, 10);      //key flash
+  $(key).stop().animate({opacity: '0.5'}, 300);   //key flash
+  $(audio).get(0).play();                         //play sound
+}
+
+function showCompSequence() {                           //display sequence to user with flash & sound
   for (var i = 0; i<compSequenceArray.length; i++){
-      if (i === 0) {
-        $('#keyC').stop().animate({opacity: '1'}, 10);      //key flash
-        $('#keyC').stop().animate({opacity: '0.5'}, 300);   //key flash
-        $('#audioKeyC').get(0).play();                      //play soun
+      switch (compSequenceArray[i]) {
+        case 0:
+          playStuff('#keyC', '#audioKeyC');
+          break;
+        case 1:
+          playStuff('#keyD', '#audioKeyD');
+          break;
+        case 2:
+          playStuff('#keyE', '#audioKeyE');
+          break;
+        case 3:
+          playStuff('#keyF', '#audioKeyF');
+          break;
+        case 4:
+          playStuff('#keyG', '#audioKeyG');
+          break;
         }
       }
     }
-showCompSequence();
+// showCompSequence();
 
-//function to display the computer sequence
 
-//function to make the keys flash
 
 //object to generate computer sequence and display to user
 // var compSequence = {
