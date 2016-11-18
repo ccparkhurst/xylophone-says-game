@@ -17,44 +17,60 @@ $('#keyF').on('click', function() {
 $('#keyG').on('click', function() {
     $('#audioKeyG').get(0).play();
 });
-$('img').on('mouseover', function() {
-    $('#audioKeyAll').get(0).play();
-});
+// $('img').on('mouseover', function() {
+//     $('#audioKeyAll').get(0).play();
+// });
 };
 userSound();
 
-//When user clicks on mallet, the game begins
-function pressPlay(){
-
-};
-
-//Computer sequence
-compSequence = [];
+//global variables
+computerSequence = [];
 userSequence = [];
-function compPlay(){
-  for (var i=0; i<compArray.length; i++){
-    compArray.push();
-  }
+
+
+//Function to initialize board
+function initialize() {
+
 }
 
-//User sequence --> needs to match computer sequence
-function userPlay(){
-  for (var i=0; i<=compArray.length; i++){
-    if (userSequence === compSequence) {
-      round = 0;
-      round += i;
-      userArray.push();
-  } else {
-    //empty array and start back at 0
-    //add trigger event for computer to start back at 0
-    userArray = [];
-    //play sound
-    var key = i;
-    $('this.key').on('click', function() {
-        $('#audioKeyAll').get(0).play();
-    });
+//function to trigger the start of the game
+function startGame() {
+  $('img').on('click', function() {
+      $('#audioKeyAll').get(0).play();
+      incRound();
+      // var round =0;
+      // round++;
+      // var incRound = $('.round').html().replace('Round: ' +round++);
+      // $('.round').html(incRound);
+  });
+}
+startGame();
+
+//function to increment the round
+function incRound() {
+  var round = 0;
+  $('img').click(function() {
+    round++;
+    $('.round').html('Round: ' + round);
+});
+}
+incRound();
+
+//function to generate computer sequence
+function createSequence(rounds) {
+  for (var i=0; i<=rounds; i++){
+    computerSequence.push(Math.floor(Math.random() * 5) + 1);
   }
 }
-}
+console.log(createSequence(5));
+createSequence(2);
 
-//
+//function for computer to take a turn and generate  flash and sound
+function computerTurn(key, sound) {
+  $.each(computerSequence, function(i, num) {
+      setTimeout(function(){
+        flash($(shape+num),1,300,num);
+      },500*index*difficulty);
+  });
+
+}
