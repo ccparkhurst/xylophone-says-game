@@ -23,7 +23,7 @@ freePlayMode();
 //global variables
 var compSequenceArray = [];
 var userSequenceArray = [];
-var keys = [];
+var keys = ['C','D','E','F','G'];
 
 
 //Function to initialize board
@@ -32,13 +32,12 @@ function initialize() {
 }
 //function to trigger the start of the game
 function startGame() {
-  $('img').on('click', function() {
+  $('img').click(function() {
     showCompSequence();
+
   });
 }
 startGame();
-
-
 
 //function to increment the round
 function incRound() {
@@ -56,36 +55,55 @@ function generateCompSequence() {
       return compSequenceArray;
 }
 generateCompSequence();
+// generateCompSequence();
+// generateCompSequence();
+// generateCompSequence();
+// generateCompSequence();
 
 //function to flash key and play sound of generated element
+
 function playStuff(key, audio) {
-  $(key).stop().animate({opacity: '1'}, 10);      //key flash
-  $(key).stop().animate({opacity: '0.5'}, 300);   //key flash
-  $(audio).get(0).play();                         //play sound
+  // $(key).stop().animate({opacity: '1'}, 2000);      //key flash
+     $(key).animate({opacity: '0.5'}, 10);
+     window.setTimeout(function(){
+       $(key).animate({opacity: '1'}, 10);
+       },500);                                       //key flash
+     $(audio).get(0).play();                         //play sound
 }
+
 
 function showCompSequence() {                           //display sequence to user with flash & sound
   for (var i = 0; i<compSequenceArray.length; i++){
-      switch (compSequenceArray[i]) {
-        case 0:
-          playStuff('#keyC', '#audioKeyC');
-          break;
-        case 1:
-          playStuff('#keyD', '#audioKeyD');
-          break;
-        case 2:
-          playStuff('#keyE', '#audioKeyE');
-          break;
-        case 3:
-          playStuff('#keyF', '#audioKeyF');
-          break;
-        case 4:
-          playStuff('#keyG', '#audioKeyG');
-          break;
-        }
-      }
+      window.setTimeout(function(i){
+        playStuff('#key'+ keys[compSequenceArray[i]], '#audioKey' + keys[compSequenceArray[i]]);
+      },i*750,i);
     }
-// showCompSequence();
+  }
+      // switch (compSequenceArray[i]) {
+      //   case 0:
+      //     window.setTimeout(playStuff('#keyC', '#audioKeyC'), i*1000);
+      //     break;
+      //   case 1:
+      //     window.setTimeout(playStuff('#keyD', '#audioKeyD'), i*1000);
+      //     break;
+      //   case 2:
+      //     window.setTimeout(playStuff('#keyE', '#audioKeyE'), i*1000);
+      //     break;
+      //   case 3:
+      //     window.setTimeout(playStuff('#keyF', '#audioKeyF'), i*1000);
+      //     break;
+      //   case 4:
+      //     window.setTimeout(playStuff('#keyG', '#audioKeyG'), i*1000);
+      //     break;
+      //   }
+      // },1000*i);
+    // }
+// window.setTimeout(function(){ alert('here');},2000);
+// window.setTimeout(function() {
+//   showCompSequence();
+// }, 2000);
+//
+
 
 
 
