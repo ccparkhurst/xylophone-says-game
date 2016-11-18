@@ -8,6 +8,26 @@ var game = { //game object
 	active: false, //whether a turn is active or not
 	handler: false, // whether the click and sound handlers are active
 	shape: '.shape', // cached string for the pad class
+
+  startGame: function(){
+    $('img').on('click', function() {
+        $('#audioKeyAll').get(0).play();
+        incRound();
+    });
+  },
+  incRound: function(){
+    var round = 0;
+    $('img').click(function() {
+      round++;
+      $('.round').html('Round: ' + round);
+    });
+  },
+
+
+
+
+
+
 };
 
 //
