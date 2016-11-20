@@ -1,106 +1,125 @@
 * {
-  font-family: 'Nunito', sans-serif;
+    font-family: 'Nunito', sans-serif;
 }
+
 h1 {
-  text-align: center;
-  font-size: 52px;
+    text-align: center;
+    font-size: 52px;
 }
-/*.wrapper{
-  position: relative;
-width:720px;
-margin:0 auto;
-}*/
-.controls{
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-img{
-  margin-right: 20px;
-  padding: 20px;
-  height: 75px;
-  -ms-transform: rotate(-7deg); /* IE 9 */
-  -webkit-transform: rotate(-7deg); /* Chrome, Safari, Opera */
-  transform: rotate(-7deg);
+
+img {
+    margin-right: 20px;
+    padding: 20px;
+    height: 75px;
+    -ms-transform: rotate(-7deg);
+    /* IE 9 */
+    -webkit-transform: rotate(-7deg);
+    /* Chrome, Safari, Opera */
+    transform: rotate(-7deg);
 }
+
 .round {
-  color: #0000ff;
-  border: 2px solid red;
-  padding: 10px;
-  display: inline;
-  float: right;
-  border-radius: 20px;
+    color: #0000ff;
+    border: 2px solid red;
+    padding: 10px;
+    display: inline;
+    float: right;
+    border-radius: 20px;
 }
+
 .xylophone {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
 .key {
-  width: 100px;
-  margin: 20px;
+    width: 100px;
+    margin: 20px;
 }
+
 #keyC {
-  background-color: red;
-  height: 200px;
-  border-radius: 20px;
+    background-color: red;
+    height: 200px;
+    border-radius: 20px;
 }
+
 #keyD {
-  background-color: orange;
-  height: 230px;
-  border-radius: 20px;
+    background-color: orange;
+    height: 230px;
+    border-radius: 20px;
 }
+
 #keyE {
-  background-color: yellow;
-  height: 260px;
-  border-radius: 20px;
+    background-color: yellow;
+    height: 260px;
+    border-radius: 20px;
 }
+
 #keyF {
-  background: green;
-  height: 290px;
-  border-radius: 20px;
+    background: green;
+    height: 290px;
+    border-radius: 20px;
 }
+
 #keyG {
-  background: blue;
-  height: 310px;
-  border-radius: 20px;
+    background: blue;
+    height: 310px;
+    border-radius: 20px;
 }
+
 #keyC:hover {
-  background-color: rgba(255,0,0,.5);
-  cursor: pointer;
+    background-color: rgba(255, 0, 0, .5);
+    cursor: pointer;
 }
+
 #keyD:hover {
-  background-color: rgba(255,127,0,.5);
-  cursor: pointer;
+    background-color: rgba(255, 127, 0, .5);
+    cursor: pointer;
 }
+
 #keyE:hover {
-  background-color: rgba(255,255,0,.5);
-  cursor: pointer;
+    background-color: rgba(255, 255, 0, .5);
+    cursor: pointer;
 }
+
 #keyF:hover {
-  background-color: rgba(0,255,0,.5);
-  cursor: pointer;
+    background-color: rgba(0, 255, 0, .5);
+    cursor: pointer;
 }
+
 #keyG:hover {
-  background-color: rgba(0,0,255,.5);
-  cursor: pointer;
+    background-color: rgba(0, 0, 255, .5);
+    cursor: pointer;
 }
+
 #keyC:click {
-  background-color: rgba(255,0,0,.5);
+    background-color: rgba(255, 0, 0, .5);
 }
+
 #keyD:click {
-  background-color: rgba(255,127,0,.5);
+    background-color: rgba(255, 127, 0, .5);
 }
+
 #keyE:click {
-  background-color: rgba(255,255,0,.5);
+    background-color: rgba(255, 255, 0, .5);
 }
+
 #keyF:click {
-  background-color: rgba(0,255,0,.5);
+    background-color: rgba(0, 255, 0, .5);
 }
+
 #keyG:click {
-  background-color: rgba(0,0,255,.5);
+    background-color: rgba(0, 0, 255, .5);
 }
+
 img:hover {
-  transform: scale(1.1);
-  cursor: pointer;
+    transform: scale(1.1);
+    cursor: pointer;
 }
