@@ -1,8 +1,9 @@
-//global variables
+//variables
 var compSequenceArray = [];
 var userSequenceArray = [];
 var keys = ['C', 'D', 'E', 'F', 'G'];
 var round = 0;
+var active = false;
 
 //Play sound when user clicks on a key --> "free play mode"
 function freePlayMode() {
@@ -88,14 +89,13 @@ function logUserSequence() {
         userSequenceArray.push(4);
         userClick();
     });
-    return userSequenceArray;
 }
 logUserSequence();
 
 //compare the user sequence to the computer sequence.
 function compareSequences() {
     for (var i = 0; i < userSequenceArray.length; i++) {
-        if (userSequenceArray[i] !== compSequenceArray[i]) {
+        if (userSequenceArray[i] !== compSequenceArray[i] && active === true) {
             return false;
         }
     }
@@ -109,12 +109,13 @@ function userClick() {
     } else if (userSequenceArray.length === compSequenceArray.length) {
         setTimeout(function() {
             newRound();
-        }, 1000);
+        }, 750);
     }
 }
 
 //If the user got it correct, then start a new round.
 function newRound() {
+    active = true;
     incRound(); //increment the round
     userSequenceArray = []; //empty the user array
     generateCompSequence(); //add a key to the computer's sequence
@@ -124,6 +125,7 @@ function newRound() {
 //if the user got it wrong, then reset the game.
 function incorrectSequence() {
     round = 0;
+    active = false;
     $('.round').html('Round: ' + round);
     userSequenceArray = [];
     compSequenceArray = [];

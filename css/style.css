@@ -123,3 +123,9 @@ img:hover {
     transform: scale(1.15);
     cursor: pointer;
 }
+
+img_title {
+    display: table;
+    background: #888888;
+    position: absolute;
+}
