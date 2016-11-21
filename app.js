@@ -1,5 +1,8 @@
-
-console.log('app.js is connected');
+//global variables
+var compSequenceArray = [];
+var userSequenceArray = [];
+var keys = ['C', 'D', 'E', 'F', 'G'];
+var round = 0;
 
 //Play sound when user clicks on a key --> "free play mode"
 function freePlayMode() {
@@ -21,18 +24,6 @@ function freePlayMode() {
 }
 freePlayMode();
 
-//global variables
-var compSequenceArray = [];
-var userSequenceArray = [];
-var keys = ['C', 'D', 'E', 'F', 'G'];
-var round = 0;
-var active = false;
-
-//initialize board
-function initialize() {
-
-}
-
 //trigger the start of the game
 function startGame() {
     $('img').click(function() {
@@ -52,7 +43,6 @@ function generateCompSequence() {
     compSequenceArray.push(Math.floor(Math.random() * 5));
     return compSequenceArray;
 }
-// generateCompSequence();
 
 //flash key and play sound of generated element
 function playStuff(key, audio) {
@@ -80,51 +70,58 @@ function showCompSequence() {
 function logUserSequence() {
     $('#keyC').click(function() {
         userSequenceArray.push(0);
+        userClick();
     });
     $('#keyD').click(function() {
         userSequenceArray.push(1);
+        userClick();
     });
     $('#keyE').click(function() {
         userSequenceArray.push(2);
+        userClick();
     });
     $('#keyF').click(function() {
         userSequenceArray.push(3);
+        userClick();
     });
     $('#keyG').click(function() {
         userSequenceArray.push(4);
+        userClick();
     });
     return userSequenceArray;
 }
 logUserSequence();
 
-//Compare the user sequence array to the computer array. If it's equal, go to next round. If not, go to incorrect sequence.
+//compare the user sequence to the computer sequence.
 function compareSequences() {
-    for (var i = 0; i < compSequenceArray.length; i++) {
-        if (userSequenceArray[i] !== compSequenceArray[i] && userSequenceArray.length === compSequenceArray.length) {
-            incorrectSequence();
+    for (var i = 0; i < userSequenceArray.length; i++) {
+        if (userSequenceArray[i] !== compSequenceArray[i]) {
             return false;
-        } else if (userSequenceArray[i] === compSequenceArray[i] && userSequenceArray.length === compSequenceArray.length) { //issue is, it is only comparing the first element in the array
-            setTimeout(function() {
-                newRound();
-            }, 1000);
-            return true;
-        // } else {
-        //     return false;
         }
     }
+    return true;
 }
-compareSequences();
 
-//If the user got it correct, then...
+//if sequences are not equal, fire incorrectSequence(). If they are equal, fire newRound().
+function userClick() {
+    if (compareSequences() === false) {
+        incorrectSequence();
+    } else if (userSequenceArray.length === compSequenceArray.length) {
+        setTimeout(function() {
+            newRound();
+        }, 1000);
+    }
+}
+
+//If the user got it correct, then start a new round.
 function newRound() {
     incRound(); //increment the round
     userSequenceArray = []; //empty the user array
     generateCompSequence(); //add a key to the computer's sequence
-    showCompSequence();     //display the computer sequence
-    compareSequences();
+    showCompSequence(); //display the computer sequence
 }
 
-//if the user got it wrong, then...
+//if the user got it wrong, then reset the game.
 function incorrectSequence() {
     round = 0;
     $('.round').html('Round: ' + round);
@@ -132,13 +129,5 @@ function incorrectSequence() {
     compSequenceArray = [];
     setTimeout(function() {
         $('#audioKeyAll').get(0).play(); //play 'wrong' sound
-    }, 500);
+    }, 10);
 }
-
-//reset the game board
-// function resetGame() {
-//     round = 0;
-//     $('.round').html('Round: ' + round);
-//     // userSequenceArray = [];
-//     // compSequenceArray = [];
-// }
