@@ -1,3 +1,4 @@
+
 console.log('app.js is connected');
 
 //Play sound when user clicks on a key --> "free play mode"
@@ -33,10 +34,9 @@ function initialize() {
 }
 
 //trigger the start of the game
-function startGame() { //***ADD A BOARD RESET ON START CLICK, otherwise if user played keys before starting game, they will have been pushed to user array
+function startGame() {
     $('img').click(function() {
-        showCompSequence();
-        incRound();
+        newRound();
     });
 }
 startGame();
@@ -52,11 +52,10 @@ function generateCompSequence() {
     compSequenceArray.push(Math.floor(Math.random() * 5));
     return compSequenceArray;
 }
-generateCompSequence();
+// generateCompSequence();
 
 //flash key and play sound of generated element
 function playStuff(key, audio) {
-    // $(key).stop().animate({opacity: '1'}, 2000);      //key flash
     $(key).animate({
         opacity: '0.5'
     }, 10);
@@ -101,41 +100,45 @@ logUserSequence();
 //Compare the user sequence array to the computer array. If it's equal, go to next round. If not, go to incorrect sequence.
 function compareSequences() {
     for (var i = 0; i < compSequenceArray.length; i++) {
-        if (userSequenceArray[i] === compSequenceArray[i] && userSequenceArray.length === compSequenceArray.length) {
-            setTimeout(function() {
-                nextRound();
-            }, 1000);
-            return true;
-        } else if (userSequenceArray[i] !== compSequenceArray[i] && userSequenceArray.length === compSequenceArray.length) {
+        if (userSequenceArray[i] !== compSequenceArray[i] && userSequenceArray.length === compSequenceArray.length) {
             incorrectSequence();
             return false;
-        } else {
-            return false;
+        } else if (userSequenceArray[i] === compSequenceArray[i] && userSequenceArray.length === compSequenceArray.length) { //issue is, it is only comparing the first element in the array
+            setTimeout(function() {
+                newRound();
+            }, 1000);
+            return true;
+        // } else {
+        //     return false;
         }
     }
 }
 compareSequences();
 
 //If the user got it correct, then...
-function nextRound() {
+function newRound() {
     incRound(); //increment the round
     userSequenceArray = []; //empty the user array
-    generateCompSequence(); //have the computer go again
+    generateCompSequence(); //add a key to the computer's sequence
+    showCompSequence();     //display the computer sequence
+    compareSequences();
 }
-
 
 //if the user got it wrong, then...
 function incorrectSequence() {
-    setTimeout(function() {
-        $('#audioKeyAll').get(0).play(); //play 'wrong' sound
-    }, 500);
-    resetGame();
-}
-
-//reset the game board
-function resetGame() {
     round = 0;
     $('.round').html('Round: ' + round);
     userSequenceArray = [];
     compSequenceArray = [];
+    setTimeout(function() {
+        $('#audioKeyAll').get(0).play(); //play 'wrong' sound
+    }, 500);
 }
+
+//reset the game board
+// function resetGame() {
+//     round = 0;
+//     $('.round').html('Round: ' + round);
+//     // userSequenceArray = [];
+//     // compSequenceArray = [];
+// }
