@@ -15,7 +15,9 @@ Upon loading the site, users are able play the xylophone in "free play mode" by 
 
 ## Wireframe
 
-![Wireframe](https://github.com/christinaparkhurst/xylophone-says-game/blob/master/images/wireframe1.JPG)(https://github.com/christinaparkhurst/xylophone-says-game/blob/master/images/wireframe2.JPG)
+![Wireframe](https://github.com/christinaparkhurst/xylophone-says-game/blob/master/images/wireframe1.JPG)
+![Wireframe](https://github.com/christinaparkhurst/xylophone-says-game/blob/master/images/wireframe2.JPG)
+
 ## Future Development
 
   * Add three levels of difficulty
