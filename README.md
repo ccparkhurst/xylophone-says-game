@@ -15,7 +15,7 @@ Upon loading the site, users are able play the xylophone in "free play mode" by 
 
 ## Wireframe
 
-![Wireframe](xylophone-says-game/images/wireframe1.JPG) (xylophone-says-game/images/wireframe2.JPG)
+![Wireframe](https://github.com/christinaparkhurst/xylophone-says-game/images/wireframe1.JPG) (https://github.com/christinaparkhurst/xylophone-says-game/images/wireframe2.JPG)
 
 ## Future Development
 
