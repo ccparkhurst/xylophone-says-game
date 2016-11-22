@@ -7,8 +7,6 @@ Upon loading the site, users are able play the xylophone in "free play mode" by 
 
 **Live site:** <http://christinaparkhurst-xylosays.bitballoon.com/>
 
-*This game is optimized for Google Chrome browser
-
 ## Technologies Used
 
   * HTML5, CSS3, CSS3 Flexbox, Javascript, jQuery, Bower, Git, Github
