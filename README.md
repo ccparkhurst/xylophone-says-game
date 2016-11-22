@@ -23,3 +23,4 @@ Upon loading the site, users are able play the xylophone in "free play mode" by 
   * Add three levels of difficulty
   * Keep track of high score
   * Toggle between free play mode and Simon mode
+  * Add ability to control keyboard with key strokes in addition to mouse clicks
