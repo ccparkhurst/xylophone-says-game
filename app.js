@@ -4,6 +4,7 @@ var userSequenceArray = [];
 var keys = ['C', 'D', 'E', 'F', 'G'];
 var round = 0;
 var active = false;
+var difficulty;
 
 //Play sound when user clicks on a key --> "free play mode"
 function freePlayMode() {
@@ -25,6 +26,18 @@ function freePlayMode() {
 }
 freePlayMode();
 
+//choose between easy and hard
+// function difficultyLevel() {
+//   $('#easybutton').click(function() {
+//         $('#easybutton').prop("checked", true);
+//   });
+//   $('#hardbutton').click(function() {
+//         $('#easybutton').prop("checked", true);
+// });
+// }
+//
+// difficultyLevel();
+
 //trigger the start of the game
 function startGame() {
     $('img').click(function() {
@@ -39,6 +52,9 @@ function incRound() {
     $('.round').html('Round: ' + round);
 }
 
+
+
+
 //generate the computer sequence
 function generateCompSequence() {
     compSequenceArray.push(Math.floor(Math.random() * 5));
@@ -49,21 +65,35 @@ function generateCompSequence() {
 function playStuff(key, audio) {
     $(key).animate({
         opacity: '0.5'
-    }, 10);
-    window.setTimeout(function() {
-        $(key).animate({
-            opacity: '1'
-        }, 10);
-    }, 500); //key flash
+    }, 0);
+    if ($('input:radio[value="easy"]').is(':checked')) {              //easy mode, flash .5 sec
+        window.setTimeout(function() {
+            $(key).animate({
+                opacity: '1'
+            }, 0);
+        }, 500); //key flash
+    } else {
+      window.setTimeout(function() {
+          $(key).animate({
+              opacity: '1'
+          }, 0);
+      }, 350); //key flash                                          //hard mode, flash .35 sec
+    }
     $(audio).get(0).play(); //play sound
 }
 
 //display sequence to user with flash & sound
 function showCompSequence() {
     for (var i = 0; i < compSequenceArray.length; i++) {
+      if ($('input:radio[value="easy"]').is(':checked')) {
         window.setTimeout(function(i) {
             playStuff('#key' + keys[compSequenceArray[i]], '#audioKey' + keys[compSequenceArray[i]]);
-        }, i * 750, i);
+        }, i * 750, i);                       //easy mode, wait 750ms between keys
+      } else {                                //if hard button is checked
+        window.setTimeout(function(i) {
+            playStuff('#key' + keys[compSequenceArray[i]], '#audioKey' + keys[compSequenceArray[i]]);
+        }, i * 500, i);                       //hard mode, wait 500ms between keys
+      }
     }
 }
 

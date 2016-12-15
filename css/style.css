@@ -33,6 +33,13 @@ img {
     border-radius: 20px;
 }
 
+.difficulty {
+  display: inline;
+  float: none;
+  margin-left: 10px;
+  /*align-self: */
+}
+
 .xylophone {
     display: flex;
     justify-content: center;
