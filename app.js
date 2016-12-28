@@ -7,7 +7,7 @@ var active = false;
 var difficulty;
 
 //Play sound when user clicks on a key --> "free play mode"
-function freePlayMode() {
+(function freePlayMode() {
     $('#keyC').on('click', function() {
         $('#audioKeyC').get(0).play();
     });
@@ -23,28 +23,15 @@ function freePlayMode() {
     $('#keyG').on('click', function() {
         $('#audioKeyG').get(0).play();
     });
-}
-freePlayMode();
-
-//choose between easy and hard
-// function difficultyLevel() {
-//   $('#easybutton').click(function() {
-//         $('#easybutton').prop("checked", true);
-//   });
-//   $('#hardbutton').click(function() {
-//         $('#easybutton').prop("checked", true);
-// });
-// }
-//
-// difficultyLevel();
+})();
 
 //trigger the start of the game
-function startGame() {
+(function startGame() {
     $('img').click(function() {
         newRound();
     });
-}
-startGame();
+})();
+// startGame();
 
 //increment the round
 function incRound() {
@@ -52,16 +39,13 @@ function incRound() {
     $('.round').html('Round: ' + round);
 }
 
-
-
-
 //generate the computer sequence
 function generateCompSequence() {
     compSequenceArray.push(Math.floor(Math.random() * 5));
     return compSequenceArray;
 }
 
-//flash key and play sound of generated element
+//flash key and play sound of generated element, with 2 levels difficulty
 function playStuff(key, audio) {
     $(key).animate({
         opacity: '0.5'
@@ -88,17 +72,17 @@ function showCompSequence() {
       if ($('input:radio[value="easy"]').is(':checked')) {
         window.setTimeout(function(i) {
             playStuff('#key' + keys[compSequenceArray[i]], '#audioKey' + keys[compSequenceArray[i]]);
-        }, i * 750, i);                       //easy mode, wait 750ms between keys
-      } else {                                //if hard button is checked
+        }, i * 750, i);                                             //easy mode, wait 750ms between keys
+      } else {
         window.setTimeout(function(i) {
             playStuff('#key' + keys[compSequenceArray[i]], '#audioKey' + keys[compSequenceArray[i]]);
-        }, i * 500, i);                       //hard mode, wait 500ms between keys
+        }, i * 500, i);                                             //hard mode, wait 500ms between keys
       }
     }
 }
 
 //push whichever key the user presses into the user sequence array so it can be compared against computer array
-function logUserSequence() {
+(function logUserSequence() {
     $('#keyC').click(function() {
         userSequenceArray.push(0);
         userClick();
@@ -119,8 +103,7 @@ function logUserSequence() {
         userSequenceArray.push(4);
         userClick();
     });
-}
-logUserSequence();
+})();
 
 //compare the user sequence to the computer sequence.
 function compareSequences() {
