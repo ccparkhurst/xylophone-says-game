@@ -12,14 +12,15 @@ Upon loading the site, users are able play the xylophone in "free play mode" by 
   * HTML5, CSS3, CSS3 Flexbox, Javascript, jQuery, Bower, Git, Github
   * Project Planning & User Stories - [Trello](https://trello.com/b/FUtYUl7u)
   * Atom Text Editor
+  
+## Screenshot
+![alt tag](https://raw.githubusercontent.com/ccparkhurst/xylophone-says-game/master/images/screenshot.png)
 
 ## Wireframe
 
 ![Wireframe](https://github.com/christinaparkhurst/xylophone-says-game/blob/master/images/wireframe1.JPG)
 ![Wireframe](https://github.com/christinaparkhurst/xylophone-says-game/blob/master/images/wireframe2.jpg)
 
-## Screenshot
-![alt tag](https://raw.githubusercontent.com/ccparkhurst/xylophone-says-game/master/images/screenshot.png)
 
 ## Future Development
 
