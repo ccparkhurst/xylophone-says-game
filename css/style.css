@@ -86,7 +86,7 @@ img {
     cursor: pointer;
 }
 
-#keyC:hover {
+/*#keyC:hover {
     background-color: rgba(255, 0, 0, .5);
     cursor: pointer;
 }
@@ -109,7 +109,7 @@ img {
 #keyG:hover {
     background-color: rgba(0, 0, 255, .5);
     cursor: pointer;
-}
+}*/
 
 #keyC:click {
     background-color: rgba(255, 0, 0, .5);
