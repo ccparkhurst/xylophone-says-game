@@ -22,6 +22,7 @@ img {
     -webkit-transform: rotate(-7deg);
     /* Chrome, Safari, Opera */
     transform: rotate(-7deg);
+    cursor: pointer;
 }
 
 .round {
@@ -37,7 +38,6 @@ img {
   display: inline;
   float: none;
   margin-left: 10px;
-  /*align-self: */
 }
 
 .xylophone {
@@ -55,33 +55,38 @@ img {
     background-color: red;
     height: 200px;
     border-radius: 20px;
+    cursor: pointer;
 }
 
 #keyD {
     background-color: orange;
     height: 230px;
     border-radius: 20px;
+    cursor: pointer;
 }
 
 #keyE {
-    background-color: yellow;
+    background-color: #FFEF00;
     height: 260px;
     border-radius: 20px;
+    cursor: pointer;
 }
 
 #keyF {
     background: green;
     height: 290px;
     border-radius: 20px;
+    cursor: pointer;
 }
 
 #keyG {
     background: blue;
     height: 310px;
     border-radius: 20px;
+    cursor: pointer;
 }
 
-#keyC:hover {
+/*#keyC:hover {
     background-color: rgba(255, 0, 0, .5);
     cursor: pointer;
 }
@@ -104,7 +109,7 @@ img {
 #keyG:hover {
     background-color: rgba(0, 0, 255, .5);
     cursor: pointer;
-}
+}*/
 
 #keyC:click {
     background-color: rgba(255, 0, 0, .5);
@@ -115,7 +120,7 @@ img {
 }
 
 #keyE:click {
-    background-color: rgba(255, 255, 0, .5);
+    background-color: rgba(255, 255, 0, .3);
 }
 
 #keyF:click {

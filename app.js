@@ -6,32 +6,12 @@ var round = 0;
 var active = false;
 var difficulty;
 
-//Play sound when user clicks on a key --> "free play mode"
-(function freePlayMode() {
-    $('#keyC').on('click', function() {
-        $('#audioKeyC').get(0).play();
-    });
-    $('#keyD').on('click', function() {
-        $('#audioKeyD').get(0).play();
-    });
-    $('#keyE').on('click', function() {
-        $('#audioKeyE').get(0).play();
-    });
-    $('#keyF').on('click', function() {
-        $('#audioKeyF').get(0).play();
-    });
-    $('#keyG').on('click', function() {
-        $('#audioKeyG').get(0).play();
-    });
-})();
-
 //trigger the start of the game
 (function startGame() {
     $('img').click(function() {
         newRound();
     });
 })();
-// startGame();
 
 //increment the round
 function incRound() {
@@ -81,27 +61,54 @@ function showCompSequence() {
     }
 }
 
-//push whichever key the user presses into the user sequence array so it can be compared against computer array
-(function logUserSequence() {
-    $('#keyC').click(function() {
-        userSequenceArray.push(0);
-        userClick();
+//on click of key, play sound and flash key,
+//push the key into the user Sequence array,
+//and run function to check if user sequence is equal to computer sequence
+(function userClick() {
+    $('#keyC').on('click', function() {
+      $('#audioKeyC').get(0).play();
+      $('#keyC').animate({ opacity: '0.5'});
+      setTimeout(function() {
+        $('#keyC').animate({ opacity: '1'});
+      }, 500);
+      userSequenceArray.push(0);
+      areSequencesEqual();
     });
-    $('#keyD').click(function() {
-        userSequenceArray.push(1);
-        userClick();
+    $('#keyD').on('click', function() {
+      $('#audioKeyD').get(0).play();
+      $('#keyD').animate({ opacity: '0.5'});
+      setTimeout(function() {
+        $('#keyD').animate({ opacity: '1'});
+      }, 500);
+      userSequenceArray.push(1);
+      areSequencesEqual();
     });
-    $('#keyE').click(function() {
-        userSequenceArray.push(2);
-        userClick();
+    $('#keyE').on('click', function() {
+      $('#audioKeyE').get(0).play();
+      $('#keyE').animate({ opacity: '0.3'});
+      setTimeout(function() {
+        $('#keyE').animate({ opacity: '1'});
+      }, 500);
+      userSequenceArray.push(2);
+      areSequencesEqual();
     });
-    $('#keyF').click(function() {
-        userSequenceArray.push(3);
-        userClick();
+    $('#keyF').on('click', function() {
+      $('#audioKeyF').get(0).play();
+      $('#keyF').animate({ opacity: '0.5'});
+      setTimeout(function() {
+        $('#keyF').animate({ opacity: '1'});
+      }, 500);
+      userSequenceArray.push(3);
+      areSequencesEqual();
     });
-    $('#keyG').click(function() {
-        userSequenceArray.push(4);
-        userClick();
+    $('#keyG').on('click', function() {
+      $('#audioKeyG').get(0).play();
+      $('#keyG').animate({ opacity: '0.5'});
+      setTimeout(function() {
+        $('#keyG').animate({ opacity: '1'});
+      }, 500);
+      userSequenceArray.push(4);
+      areSequencesEqual();
     });
 })();
 
@@ -116,7 +123,7 @@ function compareSequences() {
 }
 
 //if sequences are not equal, fire incorrectSequence(). If they are equal, fire newRound().
-function userClick() {
+function areSequencesEqual() {
     if (compareSequences() === false) {
         incorrectSequence();
     } else if (userSequenceArray.length === compSequenceArray.length) {
