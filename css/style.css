@@ -86,31 +86,6 @@ img {
     cursor: pointer;
 }
 
-/*#keyC:hover {
-    background-color: rgba(255, 0, 0, .5);
-    cursor: pointer;
-}
-
-#keyD:hover {
-    background-color: rgba(255, 127, 0, .5);
-    cursor: pointer;
-}
-
-#keyE:hover {
-    background-color: rgba(255, 255, 0, .5);
-    cursor: pointer;
-}
-
-#keyF:hover {
-    background-color: rgba(0, 255, 0, .5);
-    cursor: pointer;
-}
-
-#keyG:hover {
-    background-color: rgba(0, 0, 255, .5);
-    cursor: pointer;
-}*/
-
 #keyC:click {
     background-color: rgba(255, 0, 0, .5);
 }
