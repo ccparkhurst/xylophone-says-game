@@ -129,7 +129,7 @@ function areSequencesEqual() {
     } else if (userSequenceArray.length === compSequenceArray.length) {
         setTimeout(function() {
             newRound();
-        }, 750);
+        },  1000);
     }
 }
 
